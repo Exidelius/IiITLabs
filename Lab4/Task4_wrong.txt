@@ -1,0 +1,18 @@
+function A*(start, goal, f)
+     % множество уже пройденных вершин
+     var closed := the empty set
+     % множество частных решений
+     var open := make_queue(f)
+     enqueue(open, path(start))
+     while open is not empty
+         var p := remove_first(open)
+         var x := the last node of p
+         if x in closed
+             continue
+         if x = goal
+             return p
+         add(closed, x)
+         % добавляем смежные вершины
+         foreach y in successors(x)
+             enqueue(open, add_to_path(p, y)
+     return failure

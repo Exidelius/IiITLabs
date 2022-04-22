@@ -1,0 +1,20 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def __bool__(self):
+        return bool(self.stack)
+
+    def push(self, elem):
+        if self.stack:
+            self.stack.append((elem, min(elem, self.stack[-1][1])))
+        else:
+            self.stack.append((elem, elem))
+
+    def pop(self):
+        return self.stack.pop()[0]
+
+    def get_min(self):
+        if not self.stack:
+            return math.inf
+        return self.stack[-1][1]
